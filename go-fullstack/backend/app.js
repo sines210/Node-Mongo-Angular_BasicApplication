@@ -75,7 +75,7 @@ app.delete('/api/stuff/:id', (req, res, next)=>{
 
 app.get('/api/stuff/:id', (req, res, next)=>{
     Thing.findOne({_id : req.params.id})
-    .then(thing=>res.status(200).json(thing))
+    .then(thing=>res.status(200).json(thing))  
     .catch(error=>res.status(404).json({error}))
 })
 
