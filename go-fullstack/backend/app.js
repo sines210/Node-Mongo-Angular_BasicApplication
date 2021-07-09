@@ -2,7 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
-const stuffRoutes = require('./routes/stuff')
+const stuffRoutes = require('./routes/stuff');
+const userRoutes = require('./routes/user');
 
 
 mongoose.connect('mongodb://127.0.0.1:27017/thing',
@@ -44,7 +45,8 @@ app.use((req, res, next) => {
 app.use(bodyParser.json()); //en .use car c'est pour toutes les routes de l'application transforme le corps de la requete en objet js utilisable
 
 
-app.use('/api/stuff', stuffRoutes)
+app.use('/api/stuff', stuffRoutes);
+app.use('/api/auth', userRoutes);
 
  
 module.exports = app; //permet d'avoir accès à l'app express depuis les autres fichiers du projet 
