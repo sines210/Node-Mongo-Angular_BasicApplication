@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const path = require('path');
 
 const stuffRoutes = require('./routes/stuff');
 const userRoutes = require('./routes/user');
@@ -44,6 +45,7 @@ app.use((req, res, next) => {
 
 app.use(bodyParser.json()); //en .use car c'est pour toutes les routes de l'application transforme le corps de la requete en objet js utilisable
 
+app.use('/images', express.static(path.join(__dirname, 'images')))  //pour le multer upload image
 
 app.use('/api/stuff', stuffRoutes);
 app.use('/api/auth', userRoutes);
